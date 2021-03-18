@@ -1,57 +1,75 @@
 import coordinates from '../static/globePathMock.js'
-import pointData from '../static/globeSizeMock.js'
-import { baseBuild, controls } from './base.js'
-import { buildLights } from './light.js'
-import { BuildEarth } from './earth.js'
-import { drawWorldMap } from './lib/drawWorldMap.js'
-import { addPathData, updatePathMover, updateCurve } from './lines.js'
-import { addData } from './point.js'
-import { createGalaxy } from './buildGalaxy.js'
-import buildMoon from './moon.js'
-import { bindResizeEventListener } from './listener.js'
 
-function convertCoord () {
+import { baseBuild, controls } from './main/base.js'
+import { buildLights } from './main/light.js'
+import { bindResizeEventListener } from './main/listener.js'
+
+// 地球
+import { BuildEarth } from './view/earth/earth.js'
+import { addPathData, updatePathMover, updateCurve } from './view/earth/lines.js'
+import { addData } from './view/earth/point.js'
+import { drawWorldMap } from './lib/drawWorldMap.js'
+
+import { createGalaxy } from './view/buildGalaxy.js'
+import buildMoon from './view/moon.js'
+
+// 火球
+import material from './view/fireBall/shader2.js'
+import FireBall from './view/fireBall/fireBall.js'
+
+import galaxy from './view/sketchfab/galaxy.js'
+
+import cimu from './view/CiMuTongZi/cimu.js'
+
+function convertCoord (coords = coordinates) {
   let obj = {}
-  let arr = coordinates.map(i => {
+  let arr = coords.map(i => {
     return [`${i.srcLat},${i.srcLng}`, `${i.desLat},${i.desLng}`]
   }).flat(1)
   arr.forEach(i => {
-    obj[i] = Math.random() * 1000
+    obj[i] = 100 // Math.random() * 1000
   })
   return obj
 }
 
+// main
 baseBuild()
 controls()
-// createGalaxy()
-buildLights(threedObj)
-
-drawWorldMap(threedObj, EARTH_RADIUS * zoomFactor)
-BuildEarth()
-let moon = buildMoon()
-
-addPathData(coordinates)
-addData(convertCoord())
+buildLights()
 bindResizeEventListener()
 
+// view
+// createGalaxy()
+galaxy()
+cimu()
+
+// earth
+drawWorldMap(threedObj, EARTH_RADIUS * zoomFactor)
+BuildEarth()
+addData(convertCoord()) // points
+addPathData(coordinates) // lines
+
+FireBall()
+let moon = buildMoon()
+
 // 坐标系---
-var axes = new THREE.AxesHelper(300);
-// scene.add(axes)
+var axes = new THREE.AxesHelper(300)
+scene.add(axes)
 
 // 启动
 function animate () {
-  requestAnimationFrame(() => {
-  	animate()
-  });
+  requestAnimationFrame(() => { animate() })
 
-  cameraControls.update(); // orbitcontrols
+  cameraControls.update() // orbitcontrols
 
   updatePathMover()
   updateCurve()
 
-  threedObj.rotation.y += 0.001
-  // threedObj.rotation.x += 0.006 * Math.random()
+  threedObj.rotation.y += 0.005
+
   moon.rotation.y += 0.001
+
+  material.uniforms[ 'time' ].value += .005
 
   renderer.render(scene, camera)
 }

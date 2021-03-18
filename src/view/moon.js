@@ -8,7 +8,7 @@ export default () => {
   let ball = new THREE.Mesh(ballGeo, spherMaterial)
 
   const distance = (EARTH_RADIUS + ELEVATION_HEIGHT) * zoomFactor * 1.2
-  ball.position.set(distance, distance, distance)
+  ball.position.set(-distance - 10, distance, distance)
 
   scene.add(ball)
 

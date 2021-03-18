@@ -1,4 +1,4 @@
-import { getColor } from './lib/helpers.js'
+import { getColor } from '../../lib/helpers.js'
 
 let point = ''
 let pointGeo = ''
@@ -6,6 +6,7 @@ let pointGeo = ''
 const createPointUnit = () => {
   const geometry = new THREE.BoxGeometry(100 * zoomFactor, 100 * zoomFactor, 1);
   geometry.applyMatrix4(new THREE.Matrix4().makeTranslation(0, 0, -0.5));
+  // geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 0, -0.5)); // threejs ver 79
 
   const mesh = new THREE.Mesh(geometry);
   return mesh;
