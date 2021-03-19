@@ -19,7 +19,7 @@ export function baseBuild () { // 基础
   document.body.appendChild(renderer.domElement)
 
   threedObj = new THREE.Object3D() // 图形对象的基类。
-  threedObj.position.set(-10, 0, 0)
+  // threedObj.position.set(-10, 0, 0)
 
   scene.add(threedObj)
 }

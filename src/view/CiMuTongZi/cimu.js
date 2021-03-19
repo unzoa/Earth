@@ -4,10 +4,7 @@ const TGALoaderer = new TGALoader();
 const OBJLoaderer = new OBJLoader();
 
 const texture = TGALoaderer.load(
-	'src/view/CiMuTongZi/s3_cimutongzi.tga',
-	function ( texture ) { console.log( 'Texture is loaded' ); },
-	function ( xhr ) { console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' ); },
-	function ( error ) { console.log( 'An error happened' ); }
+	'src/view/CiMuTongZi/s3_cimutongzi.tga'
 );
 
 export default () => {
@@ -15,7 +12,7 @@ export default () => {
     obj.position.set(12, -8, 3)
     obj.rotateZ(Math.PI)
     obj.rotateX(Math.PI / 2)
-    console.log(obj)
+    // console.log(obj)
     // obj.setMaterials(texture)
     scene.add( obj )
   }, undefined, function ( error ) {

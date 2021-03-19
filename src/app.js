@@ -10,6 +10,9 @@ import { addPathData, updatePathMover, updateCurve } from './view/earth/lines.js
 import { addData } from './view/earth/point.js'
 import { drawWorldMap } from './lib/drawWorldMap.js'
 
+import Earth2 from './view/earth2/earth2.js'
+import cloud from './view/cloud/cloud.js'
+
 import { createGalaxy } from './view/buildGalaxy.js'
 import buildMoon from './view/moon.js'
 
@@ -40,8 +43,8 @@ bindResizeEventListener()
 
 // view
 // createGalaxy()
-galaxy()
-cimu()
+// galaxy()
+// cimu()
 
 // earth
 drawWorldMap(threedObj, EARTH_RADIUS * zoomFactor)
@@ -49,12 +52,16 @@ BuildEarth()
 addData(convertCoord()) // points
 addPathData(coordinates) // lines
 
+// Earth2()
+let earth2 = scene.getObjectByName('earth2')
+// cloud(earth2)
+
 FireBall()
 let moon = buildMoon()
 
 // 坐标系---
 var axes = new THREE.AxesHelper(300)
-scene.add(axes)
+// scene.add(axes)
 
 // 启动
 function animate () {
@@ -65,7 +72,7 @@ function animate () {
   updatePathMover()
   updateCurve()
 
-  threedObj.rotation.y += 0.005
+  // threedObj.rotation.y += 0.005
 
   moon.rotation.y += 0.001
 
