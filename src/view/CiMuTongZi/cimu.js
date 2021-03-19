@@ -15,7 +15,7 @@ export default () => {
     obj.position.set(12, -8, 3)
     obj.rotateZ(Math.PI)
     obj.rotateX(Math.PI / 2)
-    console.log(obj)
+    // console.log(obj)
     // obj.setMaterials(texture)
     scene.add( obj )
   }, undefined, function ( error ) {

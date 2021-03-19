@@ -74,13 +74,16 @@ const addSinglePath = (data) => {
 
   const midPoint = new THREE.Vector3(controlX, controlY, controlZ)
   let smoothDist = distance * map(dist, 0, 10, 0, (15 / dist))
+  // 最大显示为radius + Math.PI / 2
+  // 判断dist的长度和地球直径的关系
+  console.log(smoothDist);
 
   midPoint.setLength(smoothDist)
 
   controlVectorDes.add(midPoint)
   controlVectorSrc.add(midPoint)
 
-  smoothDist += Math.PI / 4 * 2
+  smoothDist += Math.PI / 2
   // console.log(smoothDist)
 
   controlVectorDes.setLength(smoothDist)

@@ -10,6 +10,9 @@ import { addPathData, updatePathMover, updateCurve } from './view/earth/lines.js
 import { addData } from './view/earth/point.js'
 import { drawWorldMap } from './lib/drawWorldMap.js'
 
+import Earth2 from './view/earth2/earth2.js'
+import cloud from './view/cloud/cloud.js'
+
 import { createGalaxy } from './view/buildGalaxy.js'
 import buildMoon from './view/moon.js'
 
@@ -48,6 +51,10 @@ drawWorldMap(threedObj, EARTH_RADIUS * zoomFactor)
 BuildEarth()
 addData(convertCoord()) // points
 addPathData(coordinates) // lines
+
+// Earth2()
+// let earth2 = scene.getObjectByName('earth2')
+// cloud(earth2)
 
 FireBall()
 let moon = buildMoon()
