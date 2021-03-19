@@ -28,7 +28,7 @@ const drawStaticPath = (curve) => { // 光线
     // 无论如何设置该值，线宽始终为1
     linewidth: 3,
     transparent: true,
-    opacity: 0
+    opacity: 0.5
   })
 
   const curveStatic = new THREE.Line(geometry, material)
@@ -105,7 +105,7 @@ const createMover = () => {
 export const addPathData = (data) => {
   data.forEach((each) => {
     addSinglePath(each)
-    // createMover()
+    createMover()
   })
 }
 
@@ -127,6 +127,6 @@ export const updateCurve = () => {
     pathGeometry[i].verticesNeedUpdate = true
   })
 
-  const speed = 0.4 // 越大越快 番位 0～1
+  const speed = 0.1 // 越大越快 番位 0～1
   curveIndex = ((curveIndex > 50) ? 0 : curveIndex + speed)
 };

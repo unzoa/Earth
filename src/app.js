@@ -41,7 +41,7 @@ bindResizeEventListener()
 // view
 // createGalaxy()
 galaxy()
-cimu()
+// cimu()
 
 // earth
 drawWorldMap(threedObj, EARTH_RADIUS * zoomFactor)
@@ -54,7 +54,7 @@ let moon = buildMoon()
 
 // 坐标系---
 var axes = new THREE.AxesHelper(300)
-scene.add(axes)
+// scene.add(axes)
 
 // 启动
 function animate () {
@@ -65,11 +65,13 @@ function animate () {
   updatePathMover()
   updateCurve()
 
-  threedObj.rotation.y += 0.005
+  threedObj.rotation.y += 0.001
 
   moon.rotation.y += 0.001
 
-  material.uniforms[ 'time' ].value += .005
+  galaxyObj && (galaxyObj.rotation.y += 0.001)
+
+  material.uniforms[ 'time' ].value += .001
 
   renderer.render(scene, camera)
 }
