@@ -44,6 +44,7 @@ const tempShader = {
     ].join('\n')
   }
 };
+
 const {
   uniforms: au,
   vertexShader: av,
