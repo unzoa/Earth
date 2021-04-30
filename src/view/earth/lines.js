@@ -18,6 +18,8 @@ let movingPoints = [] // 航线上的移动点
 let pathGeometry = [] // 线上光缆
 let curveIndex = 0
 
+// 处理函数 =====
+
 const drawStaticPath = (curve) => { // 光线
   const geometry = new THREE.Geometry()
   geometry.vertices = curve.getPoints(50)
@@ -63,7 +65,7 @@ const addSinglePath = (data) => {
   const vectorDes = getVector(desLat, desLng)
 
   const dist = vectorSrc.distanceTo(vectorDes)
-  console.log(dist)
+  // console.log(dist)
   // 最大显示为radius + Math.PI / 2
   // 判断dist的长度和地球直径的关系
 
@@ -76,6 +78,8 @@ const addSinglePath = (data) => {
   const controlZ = b * (vectorSrc.z + vectorDes.z)
 
   const midPoint = new THREE.Vector3(controlX, controlY, controlZ)
+
+  // 中点的向量长度参数
   let smoothDist = distance * map(dist, 0, 10, 0, (15 / dist))
 
   // console.log(smoothDist);
@@ -106,6 +110,8 @@ const createMover = () => {
   movingPoints.push(mesh)
   threedObj.add(mesh)
 }
+
+// 应用函数 =======
 
 export const addPathData = (data) => {
   data.forEach((each) => {

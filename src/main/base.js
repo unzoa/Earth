@@ -28,4 +28,7 @@ export function controls () { // 引用OrbitControls的控制
   cameraControls = new THREE.OrbitControls(camera)
   // cameraControls.maxDistance = 200
   // cameraControls.minDistance = 30
+
+  cameraControls.enableDamping = true
+  cameraControls.dampingFactor = 0.35
 }
