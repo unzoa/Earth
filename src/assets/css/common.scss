@@ -1,0 +1,192 @@
+@font-face {
+  font-family: SiYuan;
+  src: url('/static/fonts/KaiGenGothicSC-Normal.ttf');
+}
+* {
+  font-family: SiYuan, SimHei, Hei !important;
+
+  scrollbar-width: thin;
+  scrollbar-color: #3e579a transparent;
+  scrollbar-track-color: #3e579a;
+  -ms-scrollbar-track-color: #3e579a;
+}
+
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+  background-color: #1D0B5E!important;
+}
+::-webkit-scrollbar-thumb {
+  width: 10px !important;
+  height: 10px !important;
+  background-color: #3e579a !important;
+  box-sizing: border-box !important;
+}
+
+/*reset*/
+html,body {
+  height: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: none;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-overflow-scrolling: touch;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td, a, span, img, figure {
+  margin: 0;
+  padding: 0;
+  word-break: break-all;
+  text-shadow: none;
+}
+
+fieldset, img {
+  border: 0;
+}
+
+address, caption, cite, code, dfn, strong, th, var, optgroup {
+  font-style: normal;
+  font-weight: normal;
+}
+
+html, body {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+}
+
+input, button, textarea, select, optgroup, option {
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+input[type=text], input[type=password], select {
+  /* border: 0; */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+}
+
+abbr, acronym {
+  border: 0px;
+  font-variant: normal;
+}
+
+code, kbd, samp, tt {
+  font-size: 100%;
+}
+
+input, button, textarea, select {
+  *font-size: 100%;
+}
+
+body {
+  line-height: 1.7;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+li {
+  vertical-align: bottom;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  text-align: left;
+}
+
+caption, th {
+  text-align: left;
+}
+
+sup, sub {
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+ins {
+  text-decoration: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+img {
+  border: 0 none;
+  vertical-align: middle;
+}
+
+a, img {
+  outline: none;
+}
+
+mark, time {
+  background: none;
+  display: inline;
+}
+
+* html .clearfix {
+  height: 1%;
+}
+
+a {
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:focus {
+  outline: none;
+  -moz-outline: none;
+}
+
+i, em {
+  font-style: normal;
+}
+
+input[type="button"], input[type="submit"], input[type="reset"],input[type="text"] {
+  -webkit-appearance: none;
+}
+
+:focus {
+  outline: 0 none;
+}
+
+:link, :visited {
+  text-decoration: none;
+}

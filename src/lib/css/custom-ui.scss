@@ -1,0 +1,148 @@
+/* theme prefix __ */
+
+/*responsive*/
+  .__row {
+    overflow: hidden;
+  }
+
+  .__col-5 {
+    float: left;
+    width: 5%;
+  }
+
+  .__col-10 {
+    float: left;
+    width: 10%;
+  }
+
+  .__col-15 {
+    float: left;
+    width: 15%;
+  }
+
+  .__col-20 {
+    float: left;
+    width: 20%;
+  }
+
+  .__col-25 {
+    float: left;
+    width: 25%;
+  }
+
+  .__col-30 {
+    float: left;
+    width: 30%;
+  }
+
+  .__col-35 {
+    float: left;
+    width: 35%;
+  }
+
+  .__col-40 {
+    float: left;
+    width: 40%;
+  }
+
+  .__col-45 {
+    float: left;
+    width: 45%;
+  }
+
+  .__col-50 {
+    float: left;
+    width: 50%;
+  }
+
+  .__col-55 {
+    float: left;
+    width: 55%;
+  }
+
+  .__col-60 {
+    float: left;
+    width: 60%;
+  }
+
+  .__col-65 {
+    float: left;
+    width: 65%;
+  }
+
+  .__col-70 {
+    float: left;
+    width: 70%;
+  }
+
+  .__col-75 {
+    float: left;
+    width: 75%;
+  }
+
+  .__col-80 {
+    float: left;
+    width: 80%;
+  }
+
+  .__col-85 {
+    float: left;
+    width: 85%;
+  }
+
+  .__col-90 {
+    float: left;
+    width: 90%;
+  }
+
+  .__col-95 {
+    float: left;
+    width: 95%;
+  }
+
+/*text-align*/
+  .__text-left {
+    text-align: left;
+  }
+  .__text-center {
+    text-align: center;
+  }
+  .__text-right {
+    text-align: right;
+  }
+
+/*float*/
+  .__fl {
+    float: left;
+  }
+
+  .__fr {
+    float: right;
+  }
+  .__clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+
+/*common*/
+  .__aa {
+    box-sizing: border-box;
+    border: 1px solid red;
+  }
+
+  .__hide {
+    display: none!important;
+  }
+
+  .__textOver {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .__handCursor {
+    cursor: pointer;
+  }
