@@ -6,7 +6,7 @@ import './static'
 const tokenName = 'system'
 localStorage.setItem('tokenName', tokenName)
 
-document.title = 'X系统'
+document.title = 'Earth'
 
 export default {
   tokenName,

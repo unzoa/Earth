@@ -24,7 +24,7 @@ const TWEEN = require("@tweenjs/tween.js");
 const EarthConfigProps = {
   earthRadius: GlobalConfig.earthRadius,
   autoRotate: true,
-  zoomChina: false,
+  zoomChina: true,
   starBackground: false,
   orbitControlConfig:{
     enableZoom:false,
@@ -82,12 +82,13 @@ class Earth {
     this.waveMeshArr = waveMeshArr;
     this.flyManager = flyManager;
     this.scene.add(this.earth3dObj);
-    if (this.earthConfig.autoRotate && this.earthConfig.zoomChina) {
-      this.autoRotateEarth();
-    }
+
+    // if (this.earthConfig.autoRotate && this.earthConfig.zoomChina) {
+    //   this.autoRotateEarth();
+    // }
 
     this.animate();
-
+    // this.autoRotateEarth();
   };
 
   /**
@@ -126,7 +127,7 @@ class Earth {
    * @param {*}
    * @return {*}
    */
-  autoRotateEarth() {
+  autoRotateEarth () {
     const startRotateY = (3.15 * Math.PI) / 2;
     const startZoom = -18;
     const endRotateY = 3.3 * Math.PI;
@@ -178,27 +179,27 @@ class Earth {
    */
 
   animate = () => {
-    // if (this.waveMeshArr) {
-    //   cityWaveAnimate(this.waveMeshArr);
-    // }
+    if (this.waveMeshArr) {
+      cityWaveAnimate(this.waveMeshArr);
+    }
 
     requestAnimationFrame(this.animate);
 
     //只是自转，不需要缩放到中国
     // if (this.earth3dObj) {
     //   if (this.earthConfig.autoRotate && !this.earthConfig.zoomChina) {
-    //     this.earth3dObj.rotation.y += 0.01;
+    //     this.earth3dObj.rotation.y += 0.005;
     //   }
     // }
     this.renderer.render(this.scene, this.camera);
-    // this.afterAnimate();
+    this.afterAnimate();
   };
 
   afterAnimate = () => {
     TWEEN.update();
     //飞线更新，这句话一定要有
     if (this.flyManager != null) {
-      this.flyManager.animation();
+      // this.flyManager.animation();
     }
   };
 }

@@ -20,7 +20,7 @@ export const createEarthImageMesh = (radius) => {
   //材质对象Material
   // MeshLambertMaterial  MeshBasicMaterial
   var material = new MeshLambertMaterial({
-    map: texture, //设置地球0颜色贴图map
+    // map: texture, //设置地球0颜色贴图map
     // color: 0x3F8693,
     transparent: true,
     opacity: 0.8

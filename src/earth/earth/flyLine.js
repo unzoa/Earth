@@ -60,21 +60,24 @@ const addFlyLine = (
 ) => {
   var coefficient = 1;
   var curvePoints = new Array();
+
   var fromXyz = lon2xyz(GlobalConfig.earthRadius, fromCity.longitude, fromCity.latitude);
   var toXyz = lon2xyz(GlobalConfig.earthRadius, toCity.longitude, toCity.latitude);
+
   curvePoints.push(new Vector3(fromXyz.x, fromXyz.y, fromXyz.z));
 
   //根据城市之间距离远近，取不同个数个点
   var distanceDivRadius =
     Math.sqrt(
       (fromXyz.x - toXyz.x) * (fromXyz.x - toXyz.x) +
-        (fromXyz.y - toXyz.y) * (fromXyz.y - toXyz.y) +
-        (fromXyz.z - toXyz.z) * (fromXyz.z - toXyz.z)
+      (fromXyz.y - toXyz.y) * (fromXyz.y - toXyz.y) +
+      (fromXyz.z - toXyz.z) * (fromXyz.z - toXyz.z)
     ) / GlobalConfig.earthRadius;
+
   var partCount = 3 + Math.ceil(distanceDivRadius * 3);
+
   for (var i = 0; i < partCount; i++) {
-    var partCoefficient =
-      coefficient + (partCount - Math.abs((partCount - 1) / 2 - i)) * 0.01;
+    var partCoefficient = coefficient + (partCount - Math.abs((partCount - 1) / 2 - i)) * 0.01;
     var partTopXyz = getPartTopPoint(
       {
         x:
@@ -90,8 +93,10 @@ const addFlyLine = (
       GlobalConfig.earthRadius,
       partCoefficient
     );
+
     curvePoints.push(new Vector3(partTopXyz.x, partTopXyz.y, partTopXyz.z));
   }
+
   curvePoints.push(new Vector3(toXyz.x, toXyz.y, toXyz.z));
 
   //使用B样条，将这些点拟合成一条曲线（这里没有使用贝赛尔曲线，因为拟合出来的点要在地球周围，不能穿过地球）
@@ -107,9 +112,9 @@ const addFlyLine = (
     curve: allPoints, //飞线飞线其实是N个点构成的
     color: color, //点的颜色
     width: 0.3, //点的半径
-    length: Math.ceil((allPoints.length * 3) / 5), //飞线的长度（点的个数）
-    speed: partCount + 10, //飞线的速度
-    repeat: Infinity, //循环次数
+    length: allPoints.length, // Math.ceil((allPoints.length * 3) / 5), //飞线的长度（点的个数）
+    speed: partCount + 1, //飞线的速度
+    repeat: 1, //循环次数
   });
 
   earth.add(flyMesh);
@@ -125,6 +130,7 @@ const getPartTopPoint = (
       innerPoint.y * innerPoint.y +
       innerPoint.z * innerPoint.z
   );
+
   return {
     x: (innerPoint.x * partCoefficient * earthRadius) / fromPartLen,
     y: (innerPoint.y * partCoefficient * earthRadius) / fromPartLen,

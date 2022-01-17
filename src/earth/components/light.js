@@ -26,16 +26,16 @@ export default (scene = Scene)=>{
     // scene.add(pointLight);
 
     // 半球光1
-    var hemisphereLight = new HemisphereLight(0xffffff, 0x000000, 1);
-    hemisphereLight.position.set(-250, 250, 100);
-    scene.add(hemisphereLight);
+    // var hemisphereLight = new HemisphereLight(0x000000, 0x000000, 1);
+    // hemisphereLight.position.set(-250, 250, 100);
+    // scene.add(hemisphereLight);
 
     // var hemisphereLight = new HemisphereLight(0xffffff, 0x000000, 1);
     // hemisphereLight.position.set(-250, 250, 100);
     // scene.add(hemisphereLight);
 
     //环境光
-    var ambient = new AmbientLight(0x3F8693, 0.8);
-    scene.add(ambient);
+    // var ambient = new AmbientLight(0x3F8693, 0.8);
+    // scene.add(ambient);
 }
 

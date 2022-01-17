@@ -27,17 +27,17 @@ export const earth3dObj = (
   object3D.add(countryLine(GlobalConfig.earthRadius + 0.01));
   object3D.add(earthMesh);
   object3D.add(glow);
-  object3D.add(glowLight);
+  // object3D.add(glowLight);
 
   // 添加城市标注点和飞线
   if (cityList && flyLineData) {
     let {waveMeshArr,pointMeshArr} = getCityMeshGroup(cityList);
-   for (let index = 0; index < waveMeshArr.length; index++) {
-     const cityWaveMesh = waveMeshArr[index];
-     const cityMesh = pointMeshArr[index];
-     object3D.add(cityMesh);
-     object3D.add(cityWaveMesh);
-   }
+    for (let index = 0; index < waveMeshArr.length; index++) {
+      const cityWaveMesh = waveMeshArr[index];
+      const cityMesh = pointMeshArr[index];
+      object3D.add(cityMesh);
+      object3D.add(cityWaveMesh);
+    }
 
     //添加飞线
     let flyManager = earthAddFlyLine(object3D,flyLineData,cityList)

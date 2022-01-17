@@ -9,6 +9,7 @@ import {
 //引入国家边界数据
 import pointArr from "../data/world";
 import { countryLineColor } from "../config/index";
+
 // R:球面半径
 function countryLine (R) {
   var geometry = new BufferGeometry(); //创建一个Buffer类型几何体对象

@@ -169,8 +169,10 @@ export class InitFlyLine {
         if (delta > 0.2) return;
         this.flyArr.forEach(elem => {
             if (!elem.parent) return;
+
             if (elem._been > elem._repeat) {
                 elem.visible = false;
+
                 if (typeof elem._callback === 'function') {
                     elem._callback(elem);
                 }
