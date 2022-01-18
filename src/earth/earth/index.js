@@ -9,7 +9,9 @@ import { GlobalConfig } from "../config/index";
 import { countryLine } from "./countryPolygon";
 // import type { City, FlyData } from "../types/index";
 import { getCityMeshGroup } from "./cityPoint";
+
 import { earthAddFlyLine } from "./flyLine";
+import lineObj from './drawLine'
 
 import earthGlowPng from "../img/earth_glow.png";
 import earthGlowLightPng from "../img/earth_glow_light.png";
@@ -40,8 +42,9 @@ export const earth3dObj = (
     }
 
     //添加飞线
-    let flyManager = earthAddFlyLine(object3D,flyLineData,cityList)
-    return { object3D, waveMeshArr,flyManager};
+    // let flyManager = earthAddFlyLine(object3D,flyLineData,cityList)
+    const flyManager = new lineObj({earth: object3D})
+    return { object3D, waveMeshArr, flyManager};
   }
 
   return { object3D };

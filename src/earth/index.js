@@ -16,7 +16,7 @@ import starBackground from "./components/starBg";
 import { earth3dObj } from "./earth/index";
 import { cityWaveAnimate } from "./earth/cityPoint";
 
-import { InitFlyLine } from "./tools/flyLine";
+// import { InitFlyLine } from "./tools/flyLine";
 import { GlobalConfig } from "./config";
 
 const TWEEN = require("@tweenjs/tween.js");
@@ -49,7 +49,7 @@ class Earth {
   //飞线数据
   flyLineData = [] //?: FlyData[];
   //飞线管理
-  flyManager = InitFlyLine //: InitFlyLine = null;
+  flyManager = null //: InitFlyLine = null;
 
   constructor (
     containerId = '', // : string,
@@ -192,14 +192,14 @@ class Earth {
     //   }
     // }
     this.renderer.render(this.scene, this.camera);
-    this.afterAnimate();
+    // this.afterAnimate();
   };
 
   afterAnimate = () => {
     TWEEN.update();
     //飞线更新，这句话一定要有
     if (this.flyManager != null) {
-      // this.flyManager.animation();
+      this.flyManager.animation();
     }
   };
 }

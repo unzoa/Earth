@@ -6,19 +6,19 @@
     }"
     >
     <EarthComponent />
-    <NormalUserHeader />
+    <!-- <NormalUserHeader />
 
     <keep-alive>
       <router-view v-if="$route.meta.keepAlive" />
     </keep-alive>
-    <router-view v-if="!$route.meta.keepAlive" />
+    <router-view v-if="!$route.meta.keepAlive" /> -->
   </div>
 </template>
 
 <script>
 import { colorPrimary } from '../assets/css/color.scss'
 import EarthComponent from '../components/Earth'
-import NormalUserHeader from '../components/normal-user-header/NormalUserHeader.vue'
+// import NormalUserHeader from '../components/normal-user-header/NormalUserHeader.vue'
 export default {
   name: 'Home',
 
@@ -29,7 +29,7 @@ export default {
   },
 
   components: {
-    NormalUserHeader,
+    // NormalUserHeader,
     EarthComponent
   }
 }
