@@ -145,9 +145,18 @@ export default class InitFlyLine {
     return curveObject
   }
 
-  addTube (points) {
-    const geometry = new TubeGeometry( points, 200, 0.05, 8, false );
-    const material = new MeshBasicMaterial( { color: 0x00ff00 } );
+  addTube (curve) {
+    const geometry = new TubeGeometry( curve, 200, 0.05, 8, false );
+    const material = new MeshLambertMaterial( {
+      color: 0x00ff00,
+      emissive: 0x0000ff,
+      ambient: 0xff0000,
+      wrapAround: true,
+      wireframe: true,
+      vertexColors: true,
+      reflectivity: 1,
+      refractionRatio: 0.98
+    } );
     const mesh = new Mesh( geometry, material );
     return mesh
   }
