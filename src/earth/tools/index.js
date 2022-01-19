@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { GlobalConfig } from "../config";
 
 export const lon2xyz = (
   radius,
@@ -20,3 +21,7 @@ export const lon2xyz = (
     z: z,
   };
 };
+
+export const realHeight2raiuds14 = h => {
+  return (h + 6400) / (6400 / GlobalConfig.earthRadius)
+}

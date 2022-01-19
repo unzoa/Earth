@@ -16,21 +16,21 @@ import starBackground from "./components/starBg";
 import { earth3dObj } from "./earth/index";
 import { cityWaveAnimate } from "./earth/cityPoint";
 
-// import { InitFlyLine } from "./tools/flyLine";
+import { InitFlyLine } from "./tools/flyLine";
 import { GlobalConfig } from "./config";
 
 const TWEEN = require("@tweenjs/tween.js");
 
-const EarthConfigProps = {
-  earthRadius: GlobalConfig.earthRadius,
-  autoRotate: true,
-  zoomChina: true,
-  starBackground: false,
-  orbitControlConfig:{
-    enableZoom:false,
-    enableRotate:false
-  }
-}
+// const EarthConfigProps = {
+//   earthRadius: 6400, // GlobalConfig.earthRadius,
+//   autoRotate: true,
+//   zoomChina: true,
+//   starBackground: false,
+//   orbitControlConfig:{
+//     enableZoom:false,
+//     enableRotate:false
+//   }
+// }
 
 class Earth {
   width = 0 // : number;
@@ -42,7 +42,7 @@ class Earth {
   camera = THREE.PerspectiveCamera;
   orbitControl = OrbitControls;
   earth3dObj = THREE.Object3D;
-  earthConfig = EarthConfigProps;
+  earthConfig = {} // EarthConfigProps;
   waveMeshArr = THREE.Mesh;
   //城市列表
   cityList = null // ?: Record<string, City>;
@@ -58,7 +58,7 @@ class Earth {
     //飞线数据
     flyLineData = [], // ?: FlyData[],
     // config: EarthConfigProps = {
-    config = EarthConfigProps
+    config = {} // EarthConfigProps
   ) {
     this.parentDom = document.getElementById(containerId);
     this.width = this.parentDom.offsetWidth;
@@ -66,7 +66,7 @@ class Earth {
     this.cityList = cityList;
     this.flyLineData = flyLineData;
     GlobalConfig.earthRadius = config.earthRadius ?? GlobalConfig.earthRadius;
-    this.earthConfig = config;
+    // this.earthConfig = config;
     this.init();
   }
 
@@ -115,8 +115,8 @@ class Earth {
     orbitControl.maxZoom = controlConfig.maxZoom;
     orbitControl.minPolarAngle = controlConfig.minPolarAngle;
     orbitControl.maxPolarAngle = controlConfig.maxPolarAngle;
-    orbitControl.enableRotate = this.earthConfig.orbitControlConfig.enableRotate;
-    orbitControl.enableZoom = this.earthConfig.orbitControlConfig.enableZoom;
+    // orbitControl.enableRotate = this.earthConfig.orbitControlConfig.enableRotate;
+    // orbitControl.enableZoom = this.earthConfig.orbitControlConfig.enableZoom;
 
     orbitControl.update();
     this.orbitControl = orbitControl;
@@ -179,9 +179,9 @@ class Earth {
    */
 
   animate = () => {
-    if (this.waveMeshArr) {
-      cityWaveAnimate(this.waveMeshArr);
-    }
+    // if (this.waveMeshArr) {
+    //   cityWaveAnimate(this.waveMeshArr);
+    // }
 
     requestAnimationFrame(this.animate);
 

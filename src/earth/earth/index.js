@@ -11,7 +11,7 @@ import { countryLine } from "./countryPolygon";
 import { getCityMeshGroup } from "./cityPoint";
 
 import { earthAddFlyLine } from "./flyLine";
-import lineObj from './drawLine'
+import lineObj from './darw-line/drawLine'
 
 import earthGlowPng from "../img/earth_glow.png";
 import earthGlowLightPng from "../img/earth_glow_light.png";
@@ -42,8 +42,40 @@ export const earth3dObj = (
     }
 
     //添加飞线
-    // let flyManager = earthAddFlyLine(object3D,flyLineData,cityList)
-    const flyManager = new lineObj({earth: object3D})
+    let flyManager = earthAddFlyLine(object3D,flyLineData,cityList)
+
+    const d = require('../data/trueData.json').data
+    const lt = lineObj(object3D, d)
+
+    const btn = document.createElement('button')
+    btn.onclick = () => {
+      d.forEach(({arcid, info}) => {
+        const tarMesh = lt.flyArr[arcid]
+        if (tarMesh.len > info.length) {
+          return false
+        }
+
+        tarMesh.len++
+
+        const tarPoints = info
+          .slice(0, tarMesh.len)
+          .map(i => {
+            return {
+              h: i.hgt / 1000,
+              lat: i.lat,
+              lon: i.lon
+            }
+          })
+        lt.addMissileLineSlowly(tarPoints, tarMesh)
+      })
+    }
+    btn.innerHTML = 'test add line slowly'
+    btn.style.position = 'fixed'
+    btn.style.top = '0'
+    btn.style.left = '0'
+
+    document.body.appendChild(btn)
+
     return { object3D, waveMeshArr, flyManager};
   }
 

@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 //地球半径
-export var earthRadius = 14
+// export var earthRadius = 14
 
 //世界轮廓线段
 export const countryLineColor = 0x7aa5a5
@@ -14,7 +14,6 @@ export const controlConfig = {
 };
 
 export class GlobalConfig {
-
 
    static earthRadius = 14
 

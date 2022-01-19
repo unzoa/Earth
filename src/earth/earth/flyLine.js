@@ -114,7 +114,7 @@ const addFlyLine = (
     width: 0.3, //点的半径
     length: allPoints.length, // Math.ceil((allPoints.length * 3) / 5), //飞线的长度（点的个数）
     speed: partCount + 1, //飞线的速度
-    repeat: 1, //循环次数
+    repeat: Infinity, //循环次数
   });
 
   earth.add(flyMesh);
