@@ -6,47 +6,44 @@ import * as THREE from 'three'
 const loader = new GLTFLoader()
 
  export default class Missile {
-  constructor (earth) {
-    this.earth = earth
+  constructor () {
     this.missile = THREE.Mesh
   }
 
-  init (id, callback) {
+  init (id, xyz, callback) {
     loader.load( 'models/missile.glb',  ( gltf ) => {
 
       gltf.scene.traverse( ( child ) => {
-        child.name = id
+        child.name = id + '-cube-inner'
 
         if ( child.isMesh ) {
           child.material.emissive =  child.material.color;
-          child.material.emissiveMap = child.material.map ;
+          child.material.emissiveMap = child.material.map;
         }
 
-        child.up = new THREE.Vector3(0,0,0)
-
-        const scaleVal = 0.8
+        const scaleVal = 0.4
         child.scale.set(scaleVal, scaleVal, scaleVal)
+        child.rotateY( -Math.PI / 2)
 
-        // this.missile.position.set(0,0,0);
-        // this.missile.rotateY( -Math.PI / 4)
-        // this.missile.rotateX( Math.PI )
-        // this.missile.rotateZ( Math.PI / 8 )
-        // this.missile.lookAt(new THREE.Vector3(-10,-10,10))
+        const geometry = new THREE.BoxGeometry( 1, 1, 4 );
+        const material = new THREE.MeshLambertMaterial( {
+          emissive: 0xff0000,
+          wireframe: true,
+          vertexColors: true,
+          reflectivity: 1,
+          refractionRatio: 0.98
+        } );
+        const cube = new THREE.Mesh( geometry, material );
 
-        console.log(child)
-        // this.missile.translate( width / 2, height / 2, depth / 2 )
+        cube.add(child)
 
-        this.missile = child
-
-        // 目标 1，1，1
-        this.missile.lookAt(-1,1,1)
-
-        callback && callback(child)
+        this.missile = cube
+        this.missile.name = id + '-cube-outter'
+        this.missile.position.set(xyz,xyz,xyz)
 
       } )
 
-      this.earth.add(gltf.scene)
-
+      callback(this.missile)
     }, undefined, function ( error ) {
 
       console.log( error );

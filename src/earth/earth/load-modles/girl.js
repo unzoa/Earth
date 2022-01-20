@@ -9,7 +9,7 @@ export default class Girl {
   }
 
   init (id, callback) {
-    loader.load( 'models/missile_stinger/scene.gltf', ( gltf ) => {
+    loader.load( 'models/girl_speedsculpt/scene.gltf', ( gltf ) => {
 
       gltf.scene.traverse( ( child ) => {
 
