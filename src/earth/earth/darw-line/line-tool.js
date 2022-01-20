@@ -58,7 +58,7 @@ export default class InitFlyLine {
   addTube (curve) {
     const geometry = new TubeGeometry( curve, 200, 0.05, 8, false );
     const material = new MeshLambertMaterial( {
-      emissive: 0x00ff00,
+      emissive: 0xff0000,
       wireframe: true,
       vertexColors: true,
       reflectivity: 1,

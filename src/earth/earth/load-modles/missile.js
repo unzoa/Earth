@@ -1,7 +1,7 @@
 /* eslint-disable */
 
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import * as THREE from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 const loader = new GLTFLoader()
 
@@ -11,44 +11,43 @@ const loader = new GLTFLoader()
   }
 
   init (id, xyz, callback) {
-    loader.load( 'models/missile.glb',  ( gltf ) => {
+    loader.load(
+      // 'models/missile_stinger/scene.gltf',
+      'models/missile.glb',
+      ( gltf ) => {
 
-      gltf.scene.traverse( ( child ) => {
-        child.name = id + '-cube-inner'
+        gltf.scene.traverse( ( child ) => {
+          child.name = id + '-cube-inner'
 
-        if ( child.isMesh ) {
-          child.material.emissive =  child.material.color;
-          child.material.emissiveMap = child.material.map;
-        }
+          if ( child.isMesh ) {
+            child.material.emissive =  child.material.color;
+            child.material.emissiveMap = child.material.map;
+          }
 
-        const scaleVal = 0.4
-        child.scale.set(scaleVal, scaleVal, scaleVal)
-        child.rotateY( -Math.PI / 2)
+          const scaleVal = 0.4
+          child.scale.set(scaleVal, scaleVal, scaleVal)
+          child.rotateY( -Math.PI / 2)
 
-        const geometry = new THREE.BoxGeometry( 1, 1, 4 );
-        const material = new THREE.MeshLambertMaterial( {
-          emissive: 0xff0000,
-          wireframe: true,
-          vertexColors: true,
-          reflectivity: 1,
-          refractionRatio: 0.98
-        } );
-        const cube = new THREE.Mesh( geometry, material );
+          const geometry = new THREE.BoxGeometry( 1, 1, 4 );
+          const material = new THREE.MeshBasicMaterial( {
+            transparent: true,
+            opacity: 0
+          } );
+          const cube = new THREE.Mesh( geometry, material );
 
-        cube.add(child)
+          cube.add(child)
 
-        this.missile = cube
-        this.missile.name = id + '-cube-outter'
-        this.missile.position.set(xyz,xyz,xyz)
+          this.missile = cube
+          this.missile.name = id + '-cube-outter'
+          this.missile.position.set(xyz,xyz,xyz)
 
-      } )
+        } )
 
-      callback(this.missile)
-    }, undefined, function ( error ) {
-
-      console.log( error );
-
-    } );
+        callback(this.missile)
+      }, undefined, function ( error ) {
+        console.log( error );
+      }
+    );
   }
 
   setPosition (point) {

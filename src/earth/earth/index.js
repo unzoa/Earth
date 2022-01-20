@@ -96,9 +96,6 @@ export const earth3dObj = () => {
   let earthMesh = createEarthImageMesh(GlobalConfig.earthRadius);
   object3D.add(earthMesh);
 
-  // let cloudMesh = createEarthCloudImageMesh(earthRadius + 0.03)
-  // object3D.add(cloudMesh);
-
   let glow = earthGlow(GlobalConfig.earthRadius,earthGlowPng,3.05);
   object3D.add(glow);
 
@@ -106,6 +103,9 @@ export const earth3dObj = () => {
   object3D.add(glowLight);
 
   object3D.add(countryLine(GlobalConfig.earthRadius + 0.01));
+
+  const girl = new Girl(object3D)
+  girl.init('hasdahks')
 
   return { object3D }
 }

@@ -20,14 +20,7 @@ export default class Girl {
         child.scale.set(scaleVal, scaleVal, scaleVal)
 
         // child.translateY(0)
-        child.lookAt(-1,-1,-1)
-
-        if ( child.isMesh ) {
-          // TOFIX RoughnessMipmapper seems to be broken with WebGL 2.0
-          // roughnessMipmapper.generateMipmaps( child.material );
-          // child.material.emissive =  child.material.color;
-          // child.material.emissiveMap = child.material.map ;
-        }
+        // child.lookAt(-1,-1,-1)
 
       } )
 
@@ -35,9 +28,7 @@ export default class Girl {
       callback && callback()
 
     }, undefined, function ( error ) {
-
       console.error( error );
-
     } );
   }
 }
