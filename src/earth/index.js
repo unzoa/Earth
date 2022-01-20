@@ -1,6 +1,7 @@
 /* eslint-disable */
 
 import * as THREE from "three";
+
 import { CSS2DRenderer } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { controlConfig } from "./config/index";
@@ -82,6 +83,9 @@ class Earth {
     this.waveMeshArr = waveMeshArr;
     this.flyManager = flyManager;
     this.scene.add(this.earth3dObj);
+
+    const axes = new THREE.AxesHelper(300)
+    this.scene.add(axes)
 
     // if (this.earthConfig.autoRotate && this.earthConfig.zoomChina) {
     //   this.autoRotateEarth();

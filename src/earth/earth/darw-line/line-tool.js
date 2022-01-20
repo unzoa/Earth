@@ -24,6 +24,19 @@ export default class InitFlyLine {
     })
   }
 
+  getCurve (points) {
+    let curvePoints = []
+
+    points.forEach(i => {
+      const point = lon2xyz(realHeight2raiuds14(i.h), i.lon, i.lat)
+      curvePoints.push(new Vector3(point.x, point.y, point.z))
+    })
+
+    const curve = new CatmullRomCurve3( curvePoints, false );
+
+    return curve
+  }
+
   drawMissileLine (points, arcid) {
     let curvePoints = []
 

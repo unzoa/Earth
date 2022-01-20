@@ -23,7 +23,7 @@ export const createEarthImageMesh = (radius) => {
     // map: texture, //设置地球0颜色贴图map
     // color: 0x3F8693,
     transparent: true,
-    opacity: 0.8
+    opacity: 0.1
   });
   var mesh = new Mesh(geometry, material); //网格模型对象Mesh
   return mesh;
