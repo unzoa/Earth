@@ -1,7 +1,7 @@
 /* eslint-disable */
 import * as THREE from 'three'
 import { Object3D } from "three";
-import { createEarthImageMesh } from "./earth";
+import { createEarthImageMesh } from "./globe";
 
 // import { createEarthCloudImageMesh } from "./cloud";
 import { earthGlow } from "./glow";
@@ -30,16 +30,21 @@ export const earth3dObj = () => {
   let missileIndex = 0
   function addMissle () {
     const id = Object.keys(lt.flyArr)[missileIndex]
+    const geo = Object.values(lt.flyArr)[missileIndex].geometry
+    const points = geo.parameters.path.points
+    const pointLast = points.slice(points.length - 1)[0]
+    const pointAt = points.slice(points.length - 2, points.length - 1)[0]
+
     const missileItem = new Missile()
     missileItem.init(
       id,
-      (missileIndex + 1) * 3,
+      pointAt,
+      pointLast,
       missile => {
+        object3D.add(missile)
+
         missileIndex++
-
-        if (missileIndex <= Object.keys(lt.flyArr).length) {
-          object3D.add(missile)
-
+        if (missileIndex < Object.keys(lt.flyArr).length) {
           addMissle()
         }
       }
@@ -78,14 +83,9 @@ export const earth3dObj = () => {
 
       const missileTar = object3D.children.find(m => m.name === (arcid + '-cube-outter'))
 
-      const scaleVal = 0.2
-      missileTar.scale.set(scaleVal, scaleVal, scaleVal)
       missileTar.position.set(point.x, point.y, point.z)
       missileTar.lookAt(point2.x, point2.y, point2.z)
-
     })
-
-    console.log(object3D.children)
   }
   btn.innerHTML = 'test add line slowly'
   btn.style.position = 'fixed'
@@ -104,8 +104,8 @@ export const earth3dObj = () => {
 
   object3D.add(countryLine(GlobalConfig.earthRadius + 0.01));
 
-  const girl = new Girl(object3D)
-  girl.init('hasdahks')
+  // const girl = new Girl(object3D)
+  // girl.init('hasdahks')
 
   return { object3D }
 }

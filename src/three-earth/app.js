@@ -14,7 +14,7 @@ import initCamera from "./components/camera";
 import initLight from "./components/light";
 import starBackground from "./components/starBg";
 
-import { earth3dObj } from "./earth/index";
+import { earth3dObj } from "./earth/earth";
 import { cityWaveAnimate } from "./earth/cityPoint";
 
 import { InitFlyLine } from "./tools/flyLine";

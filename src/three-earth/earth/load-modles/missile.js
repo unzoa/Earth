@@ -10,7 +10,7 @@ const loader = new GLTFLoader()
     this.missile = THREE.Mesh
   }
 
-  init (id, xyz, callback) {
+  init (id, at, dir, callback) {
     loader.load(
       // 'models/missile_stinger/scene.gltf',
       'models/missile.glb',
@@ -24,7 +24,7 @@ const loader = new GLTFLoader()
             child.material.emissiveMap = child.material.map;
           }
 
-          const scaleVal = 0.4
+          const scaleVal = 0.08
           child.scale.set(scaleVal, scaleVal, scaleVal)
           child.rotateY( -Math.PI / 2)
 
@@ -39,7 +39,9 @@ const loader = new GLTFLoader()
 
           this.missile = cube
           this.missile.name = id + '-cube-outter'
-          this.missile.position.set(xyz,xyz,xyz)
+          this.missile.position.set(at.x, at.y, at.z)
+
+          this.missile.lookAt(dir.x, dir.y, dir.z)
 
         } )
 

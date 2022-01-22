@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Earth from '../../earth'
+import Earth from '../../three-earth/app'
 import {
   cityList,
   bizLines
